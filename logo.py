@@ -11,7 +11,7 @@ pygame.display.set_caption('Custom Logo')
 
 # Load logo image
 logo_image = pygame.image.load('logoS.png')
-logo_rect = logo_image.get_rect('logoS.png')
+logo_rect = logo_image.get_rect('')
 
 # Set up logo initial position and speed
 logo_rect.centerx, logo_rect.centery = screen_width // 2, screen_height // 2
