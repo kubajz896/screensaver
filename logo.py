@@ -1,23 +1,21 @@
 import pygame
 import sys
 
-# Initialize Pygame
 pygame.init()
 
 # Set up display
-screen_width, screen_height = 800, 600
-screen = pygame.display.set_mode((screen_width, screen_height), pygame.FULLSCREEN)
-pygame.display.set_caption('Custom Logo')
+width, height = 800, 600
+screen = pygame.display.set_mode((width, height))
+pygame.display.set_caption('Bouncing Logo')
 
 # Load logo image
-logo_image = pygame.image.load('logoS.png')
-logo_rect = logo_image.get_rect('')
+logo = pygame.image.load('logoS.png')  # Replace with the path to your logo image
+logo_rect = logo.get_rect()
 
-# Set up logo initial position and speed
-logo_rect.centerx, logo_rect.centery = screen_width // 2, screen_height // 2
-logo_speed_x, logo_speed_y = 2, 2
+# Set initial position and speed
+x, y = 100, 100
+speed_x, speed_y = 5, 5
 
-# Main game loop
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -25,24 +23,21 @@ while True:
             sys.exit()
 
     # Update logo position
-    logo_rect.x += logo_speed_x
-    logo_rect.y += logo_speed_y
+    x += speed_x
+    y += speed_y
 
     # Bounce off the walls
-    if logo_rect.left < 0 or logo_rect.right > screen_width:
-        logo_speed_x = -logo_speed_x
-    if logo_rect.top < 0 or logo_rect.bottom > screen_height:
-        logo_speed_y = -logo_speed_y
+    if x <= 0 or x + logo_rect.width >= width:
+        speed_x = -speed_x
+    if y <= 0 or y + logo_rect.height >= height:
+        speed_y = -speed_y
 
-  # Fill the screen with a background color (change the color here)
-    screen.fill((0, 0, 0))  # Change (0, 0, 0) to the RGB values of your desired color
-
-
-    # Draw the logo image
-    screen.blit(logo_image, logo_rect)
+    # Draw background and logo
+    screen.fill((0, 0, 0))
+    screen.blit(logo, (x, y))
 
     # Update display
     pygame.display.flip()
 
-    # Control the frame rate
-    pygame.time.Clock().tick(60)
+    # Control frame rate
+    pygame.time.Clock().tick(30)
