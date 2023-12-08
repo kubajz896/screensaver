@@ -5,5 +5,5 @@ PyInstaller.__main__.run([
     '--distpath', './dist',
     '--onefile',
     '--windowed',
-    '--add-data', './src/logoS.png;.'
+    '--add-data', './src/logo2S.png;.'
 ])
