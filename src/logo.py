@@ -20,7 +20,7 @@ def get_path(filename):
         return filename
     
 # Load logo image
-logo_image = pygame.image.load(get_path("logoS.png"))
+logo_image = pygame.image.load(get_path("logo2s.png"))
 logo_rect = logo_image.get_rect()
 
 # Set up logo initial position and speed
